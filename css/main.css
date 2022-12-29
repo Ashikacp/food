@@ -1,0 +1,314 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+/* custom properties */
+:root{
+    /* creating a custom property named leading with a lineheight 2em */
+    --leading:2em;
+}
+
+body{
+font-family: 'Montserrat', sans-serif;
+margin: 0;
+}
+
+.hero-bg {
+    background:  url('../images/firstim.jpg') #307d99;
+    color: white;
+    /* to make the bg orange visible */
+    background-position: 12% 83%;
+    text-align: center;
+    background-size: cover;
+    padding-bottom: 4em;
+
+}
+header{
+    padding: 1em 0;
+}
+.hero-bg a{
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+section{
+    margin: 0 1em;
+}
+h1{
+    font-size: 2.5rem;
+    margin: 2em 0 1.2em;
+
+}
+h1 span{
+    text-transform: uppercase;
+    display: block;
+    font-size: 1.4rem;
+    position: relative;
+    z-index: 1;
+}
+/* for underline behind the text The Healthy */
+h1 span::before{
+    content: '';
+    position: absolute;
+    width: 3em;
+    background: #00bfff;
+    height: .4em;
+    bottom: 0;
+    /* z-index: -1;   will go behind the text */
+    z-index: -1;
+    margin-left: -.3em;
+    
+}
+.hero-bg p1{
+    font-weight: bold;
+    margin: 0 1em 3em ;
+}
+.form-container{
+    background-color: white;
+    margin: 2em -1em 0;
+    padding: 2em;
+
+}
+label{
+    color: #2d7d98;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 1em;
+    font-size: 1.2em;
+
+}
+
+input[type=text]{
+    border: 1px solid #707070;
+    width: 100%;
+    padding: 1em;
+    /* lined up // when using padding with width.if we dont use it find food now and text field will be have different paddng size */
+    box-sizing: border-box;
+    /* for rounded edge */
+    border-radius: .5em;
+    margin-top: 1.2em;
+
+}
+.form-container p{
+    color: gray;
+    font-weight: normal;
+    font-size: .9em;
+    margin-bottom: 1.5em;
+    margin-top: .3em;
+
+}
+input[type=button]{
+  background-color: #f89104;
+  border: none;
+  width: 100%;
+  color: white;
+  font-weight: bold;
+  padding: 1em 0;
+  border-radius: .5em;
+  font-size: 1.3em;
+  cursor: pointer;
+}
+input[type=button]:hover{
+    background-color: #c87500;
+    font-weight: normal;
+}
+.authentic{
+    margin: 0;
+}
+.right-col{
+    text-align: center;
+    margin: 3em 1em;
+}
+h2{
+    text-transform: uppercase;
+    position: relative;
+}
+
+h2::before{
+    content: '';
+    position: absolute;
+    width: 8em;
+    background: #00bfff;
+    height: .4em;
+    bottom: 0;
+    z-index: -1;
+    margin-left: -.3em;
+
+}
+
+ p1{
+    /* line-height: 2em; 
+    we can use either directly give line height as 2em
+     or by creating custom peoperies .since repitative values are using in multiple areas*/
+     line-height:var(--leading) ;
+
+}
+
+img{
+    width: 100%;
+}
+
+.overlay{
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    background: rgba(0, 0, 0, .9);
+    z-index: 1;
+    place-content: center;
+    color: white;
+    display: none;
+    opacity: 0;
+}
+.animate-overlay{
+    animation: overlay 3s forwards;
+
+}
+
+
+
+
+/* buttons and pictures are wide here..so to make it responsive(for all media eg:desktop ipad and mobile) use media query
+
+above code is looking good only in mobile view.so to make to responsive use media query*/
+/* media query */
+
+/* for tablet  */
+
+@media(min-width: 730px){
+
+    section{
+        margin: 0 4em;
+
+    }
+    .form-container{
+        margin: 2em -4em 0;
+    }
+
+}
+
+/* desktop */
+@media(min-width: 930px){
+
+    /* all hero section -left aligned as per figma design */
+    .hero-bg {
+        text-align: left;
+     
+    }
+    .hero-bg p1{
+        margin: 0 0 3em;
+    }
+    .hero-bg section{
+        width: 65%;
+
+    }
+    .form-container{
+        margin: 2em 0 0;
+        padding: 2em;
+        border-radius: .5em;
+        /* shadw property 10 px on x,y=10, blur amount=10 ,actual color=000 alpha/opacity=.3*/
+        box-shadow: 10px 10px 10px rgba(0, 0, 0, .3);
+
+
+    }
+
+    /* as per desktop view "enter city" ,"text box",and "sandiago text" lined vetically(floated left each other)
+     and the button is in the next column */
+     /* flex box and grid are two ways to organize layout */
+     form{
+        display: flex;
+     }
+     .form-left{
+        width: 70%;
+
+     }
+
+     label
+     {
+        margin: 0;
+     }
+     input[type="button"]{
+        height: fit-content;
+        font-size: 1.1em;
+        margin-left: 1em;
+        margin-top: 2.2em;
+        padding: .7em 0em;
+        width: 30%;
+
+     }
+     .hero-bg p{
+        margin-bottom: 0em;
+
+     }
+     /* need to display section 2 as grid. right side paragraph and left side a bowl */
+     section.authentic{
+        display: grid;
+        grid-template-columns: repeat(2,50%);
+        /* now the bowl picture is on right side and content paragraph is on left.. 
+        using grid area defining bowl in the left side and content in the right */
+        grid-template-areas: "bowl content";
+
+     }
+     
+
+     .right-col{
+        grid-area: content;
+        padding: 0 10%;
+        text-align: left;
+        align-self: center;
+
+
+     }
+     img{
+        grid-area: bowl;
+     }
+     h2{
+        margin: 0;
+     }
+     
+}
+/* animate top section in hero */
+.top{
+    /* animation name=fadeIn duration=2s ,forwards since we dont want to it looping.it plays and stops */
+    animation: fadeIn 2s forwards;
+
+}
+
+/* define the FadeIn animation  */
+
+@keyframes fadeIn{
+    from{
+        /* hidden at first ie opacity=0 ,then go to opacity 1 */
+        opacity: 0;
+        /*  fading should comes down progressivly.hence use transform
+        use translatey since we gona come from the top*/
+
+        transform: translateY(-2em);
+
+
+    }
+    to{
+
+        opacity: 1;
+        /* comes down to default position ie zero */
+        transform: translateY(0);
+
+    }
+
+}
+
+@keyframes overlay{
+    /* here we need to do multistep animation now
+    fade in for a little bit,and stay there for longer then fade out  */
+
+    0% {
+        opacity: 0;
+    }
+    30%{
+        opacity: 1;
+    }
+    70%{
+        opacity: 1;
+
+    }
+    100%{
+        opacity: 0;
+    }
+}
